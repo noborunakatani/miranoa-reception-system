@@ -12,7 +12,6 @@
     sampleText: document.getElementById("sampleText")
   };
 
-  var latestPayload = null;
   var latestModuleText = "";
 
   function setStatus(message, tone) {
@@ -45,24 +44,23 @@
       window.ReceptionDirectory.escapeHtml(payload.sourceName) +
       ' / 生成時刻: ' +
       window.ReceptionDirectory.escapeHtml(window.ReceptionDirectory.formatTimestamp(payload.updatedAt)) +
-      "</p>";
+      '</p>';
 
     elements.previewBody.innerHTML = payload.records
       .slice(0, 12)
       .map(function (record) {
         return (
-          "<tr>" +
-          "<td>" + window.ReceptionDirectory.escapeHtml(record.department) + "</td>" +
-          "<td>" + window.ReceptionDirectory.escapeHtml(record.name) + "</td>" +
-          "<td>" + window.ReceptionDirectory.escapeHtml(record.extension) + "</td>" +
-          "</tr>"
+          '<tr>' +
+          '<td>' + window.ReceptionDirectory.escapeHtml(record.department) + '</td>' +
+          '<td>' + window.ReceptionDirectory.escapeHtml(record.name) + '</td>' +
+          '<td>' + window.ReceptionDirectory.escapeHtml(record.extension) + '</td>' +
+          '</tr>'
         );
       })
-      .join("");
+      .join('');
   }
 
   function updateModuleOutput(payload) {
-    latestPayload = payload;
     latestModuleText = window.ReceptionDirectory.exportDirectoryModule(payload);
     elements.moduleOutput.value = latestModuleText;
     elements.downloadButton.disabled = false;
@@ -72,20 +70,20 @@
   function parseCurrentText(sourceName) {
     var text = elements.rawInput.value.trim();
     if (!text) {
-      setStatus("内線表の内容が空です。", "warning");
+      setStatus('内線表の内容が空です。', 'warning');
       return;
     }
 
-    var payload = window.ReceptionDirectory.parseDirectoryText(text, sourceName || "directory.txt");
+    var payload = window.ReceptionDirectory.parseDirectoryText(text, sourceName || 'directory.txt');
     renderPreview(payload);
     updateModuleOutput(payload);
 
     if (!payload.records.length) {
-      setStatus("3列の内線表として読み取れませんでした。区切り文字や列順を確認してください。", "danger");
+      setStatus('3列の内線表として読み取れませんでした。区切り文字や列順を確認してください。', 'danger');
       return;
     }
 
-    setStatus("公開用の directory.js を生成しました。`,data/directory.js` を置き換えてください。", "success");
+    setStatus('公開用の directory.js を生成しました。GitHub 上の data/directory.js を置き換えてください。', 'success');
   }
 
   function handleFileSelection(file) {
@@ -95,13 +93,13 @@
 
     var reader = new FileReader();
     reader.onload = function () {
-      elements.rawInput.value = String(reader.result || "");
+      elements.rawInput.value = String(reader.result || '');
       parseCurrentText(file.name);
     };
     reader.onerror = function () {
-      setStatus("ファイルを読み込めませんでした。", "danger");
+      setStatus('ファイルを読み込めませんでした。', 'danger');
     };
-    reader.readAsText(file, "utf-8");
+    reader.readAsText(file, 'utf-8');
   }
 
   function downloadModule() {
@@ -109,11 +107,11 @@
       return;
     }
 
-    var blob = new Blob([latestModuleText], { type: "text/javascript;charset=utf-8" });
+    var blob = new Blob([latestModuleText], { type: 'text/javascript;charset=utf-8' });
     var url = URL.createObjectURL(blob);
-    var anchor = document.createElement("a");
+    var anchor = document.createElement('a');
     anchor.href = url;
-    anchor.download = "directory.js";
+    anchor.download = 'directory.js';
     document.body.appendChild(anchor);
     anchor.click();
     anchor.remove();
@@ -125,13 +123,22 @@
       return;
     }
 
+    if (!navigator.clipboard || !navigator.clipboard.writeText) {
+      elements.moduleOutput.focus();
+      elements.moduleOutput.select();
+      setStatus('クリップボード API を使えないため、表示内容を選択しました。', 'warning');
+      return;
+    }
+
     navigator.clipboard
       .writeText(latestModuleText)
       .then(function () {
-        setStatus("directory.js の内容をコピーしました。", "success");
+        setStatus('directory.js の内容をコピーしました。', 'success');
       })
       .catch(function () {
-        setStatus("コピーに失敗しました。必要であれば手動で選択してください。", "warning");
+        elements.moduleOutput.focus();
+        elements.moduleOutput.select();
+        setStatus('コピーに失敗したため、表示内容を選択しました。', 'warning');
       });
   }
 
@@ -144,23 +151,23 @@
     elements.sampleText.textContent = current.records
       .slice(0, 3)
       .map(function (record, index) {
-        var head = index === 0 ? "部署名,名前,内線番号\n" : "";
-        return head + record.department + "," + record.name + "," + record.extension;
+        var head = index === 0 ? '部署名,名前,内線番号\n' : '';
+        return head + record.department + ',' + record.name + ',' + record.extension;
       })
-      .join("\n");
+      .join('\n');
   }
 
-  elements.parseButton.addEventListener("click", function () {
+  elements.parseButton.addEventListener('click', function () {
     var file = elements.directoryFile.files && elements.directoryFile.files[0];
-    parseCurrentText(file ? file.name : "pasted-directory.txt");
+    parseCurrentText(file ? file.name : 'pasted-directory.txt');
   });
 
-  elements.directoryFile.addEventListener("change", function (event) {
+  elements.directoryFile.addEventListener('change', function (event) {
     handleFileSelection(event.target.files && event.target.files[0]);
   });
 
-  elements.downloadButton.addEventListener("click", downloadModule);
-  elements.copyButton.addEventListener("click", copyModule);
+  elements.downloadButton.addEventListener('click', downloadModule);
+  elements.copyButton.addEventListener('click', copyModule);
 
   showCurrentSample();
 })();
