@@ -1,0 +1,75 @@
+<svg width="320" height="480" viewBox="0 0 320 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="helmetWhite" x1="160" y1="26" x2="160" y2="138" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="1" stop-color="#E8EEF8" />
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="92" y1="126" x2="224" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7657D2" />
+      <stop offset="1" stop-color="#3F2B86" />
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="160" y1="228" x2="160" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6C7D9E" />
+      <stop offset="1" stop-color="#44536E" />
+    </linearGradient>
+    <linearGradient id="whiteSuit" x1="160" y1="174" x2="160" y2="298" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="1" stop-color="#E5ECF6" />
+    </linearGradient>
+    <linearGradient id="shoeGrad" x1="104" y1="426" x2="216" y2="462" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B6788" />
+      <stop offset="1" stop-color="#263043" />
+    </linearGradient>
+    <filter id="shadow" x="46" y="12" width="228" height="452" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#17325F" flood-opacity="0.18" />
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <ellipse cx="160" cy="448" rx="78" ry="16" fill="#B5C7E8" fill-opacity="0.55" />
+    <path d="M101 104C101 58.2 128.7 34 160 34C191.3 34 219 58.2 219 104V180H101V104Z" fill="url(#hairGrad)" />
+    <path d="M82 106C82 56.8 118.3 26 160 26C201.7 26 238 56.8 238 106V122C238 128.6 232.6 134 226 134H94C87.4 134 82 128.6 82 122V106Z" fill="url(#helmetWhite)" />
+    <path d="M94 60C81.9 71.7 76 86.7 76 107V120" stroke="#3559BE" stroke-width="13" stroke-linecap="round" />
+    <path d="M227 60C239.1 71.7 245 86.7 245 107V120" stroke="#3559BE" stroke-width="13" stroke-linecap="round" />
+    <path d="M131 36L122 125" stroke="#CFD8E8" stroke-width="4" stroke-linecap="round" />
+    <path d="M160 31V127" stroke="#CFD8E8" stroke-width="4" stroke-linecap="round" />
+    <path d="M189 36L198 125" stroke="#CFD8E8" stroke-width="4" stroke-linecap="round" />
+    <circle cx="120" cy="88" r="4" fill="#E44C5E" />
+    <text x="134" y="95" fill="#2455C3" font-size="24" font-family="Avenir Next, Arial, sans-serif" font-weight="800">DNC.</text>
+    <circle cx="205" cy="88" r="4" fill="#1DB582" />
+    <path d="M111 143C111 109.9 132.5 90 160 90C187.5 90 209 109.9 209 143V201H111V143Z" fill="url(#hairGrad)" />
+    <path d="M110 182C110 150.5 132.6 124 160 124C187.4 124 210 150.5 210 182V203C210 231.7 187.7 255 160 255C132.3 255 110 231.7 110 203V182Z" fill="#FFE7D9" />
+    <ellipse cx="139" cy="194" rx="6" ry="8" fill="#2E3A61" />
+    <ellipse cx="182" cy="194" rx="6" ry="8" fill="#2E3A61" />
+    <ellipse cx="139" cy="195" rx="3" ry="4" fill="#88D4FF" />
+    <ellipse cx="182" cy="195" rx="3" ry="4" fill="#88D4FF" />
+    <circle cx="137" cy="193" r="1.5" fill="#FFFFFF" />
+    <circle cx="180" cy="193" r="1.5" fill="#FFFFFF" />
+    <ellipse cx="127" cy="212" rx="8" ry="5" fill="#F8B5C3" fill-opacity="0.7" />
+    <ellipse cx="193" cy="212" rx="8" ry="5" fill="#F8B5C3" fill-opacity="0.7" />
+    <path d="M152 208C156.7 211.3 163.3 211.3 168 208" stroke="#D88C8C" stroke-width="3" stroke-linecap="round" />
+    <path d="M124 178C130.2 171.1 138.6 167.9 149 168" stroke="#5E47A8" stroke-width="6" stroke-linecap="round" />
+    <path d="M171 168C181.4 167.9 189.8 171.1 196 178" stroke="#5E47A8" stroke-width="6" stroke-linecap="round" />
+    <path d="M103 183C93 214.6 90 255.7 95 331" stroke="#563A9C" stroke-width="18" stroke-linecap="round" />
+    <path d="M217 183C227 214.6 230 255.7 225 331" stroke="#563A9C" stroke-width="18" stroke-linecap="round" />
+    <path d="M99 261C99 228.4 125.4 202 158 202H162C194.6 202 221 228.4 221 261V330H99V261Z" fill="url(#whiteSuit)" />
+    <path d="M118 230H202V330H118V230Z" fill="url(#suitGrad)" />
+    <path d="M160 230V330" stroke="#CFD7E8" stroke-width="4" />
+    <path d="M100 330H220V380C220 406.5 198.5 428 172 428H148C121.5 428 100 406.5 100 380V330Z" fill="url(#suitGrad)" />
+    <rect x="129" y="218" width="62" height="18" rx="8" fill="#F8FBFF" />
+    <text x="142" y="231" fill="#2455C3" font-size="16" font-family="Avenir Next, Arial, sans-serif" font-weight="800">DNC.</text>
+    <path d="M124 231H107C102.6 231 99 234.6 99 239V300H124V231Z" fill="#F8FBFF" />
+    <path d="M196 231H213C217.4 231 221 234.6 221 239V300H196V231Z" fill="#F8FBFF" />
+    <rect x="112" y="342" width="96" height="18" rx="9" fill="#2E3541" />
+    <rect x="149" y="344" width="20" height="14" rx="3" fill="#AAB3C2" />
+    <path d="M120 428L110 456H150L144 424L120 428Z" fill="url(#shoeGrad)" />
+    <path d="M200 428L210 456H170L176 424L200 428Z" fill="url(#shoeGrad)" />
+    <path d="M111 447H149" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+    <path d="M171 447H209" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+    <path d="M111 455H149" stroke="#7AD24E" stroke-width="5" stroke-linecap="round" />
+    <path d="M171 455H209" stroke="#7AD24E" stroke-width="5" stroke-linecap="round" />
+    <path d="M118 438L124 444" stroke="#F7A04B" stroke-width="4" stroke-linecap="round" />
+    <path d="M128 436L134 442" stroke="#F7A04B" stroke-width="4" stroke-linecap="round" />
+    <path d="M186 438L192 444" stroke="#F7A04B" stroke-width="4" stroke-linecap="round" />
+    <path d="M196 436L202 442" stroke="#F7A04B" stroke-width="4" stroke-linecap="round" />
+  </g>
+</svg>
