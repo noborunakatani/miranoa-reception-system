@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>内線表更新 | ミラノア受付システム</title>
+    <meta name="theme-color" content="#edf4ff" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page page-admin">
+    <div class="shell shell-admin">
+      <header class="topbar card">
+        <div>
+          <p class="eyebrow">Admin Console</p>
+          <h1>内線表更新画面</h1>
+          <p class="lede">TXT / CSV / TSV を読み込み、公開用の `data/directory.js` を生成します。</p>
+        </div>
+        <a class="ghost-link" href="./index.html">受付画面へ戻る</a>
+      </header>
+
+      <main class="admin-layout">
+        <section class="card admin-main">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Upload</p>
+              <h2>内線表ファイルを取り込む</h2>
+            </div>
+            <p class="panel-note">1行ごとに「部署名 / 名前 / 内線番号」を含む形式を想定しています。</p>
+          </div>
+
+          <div class="section-box upload-box">
+            <label class="file-picker" for="directoryFile">
+              <span>ファイルを選択</span>
+              <input id="directoryFile" type="file" accept=".txt,.csv,.tsv" />
+            </label>
+            <button id="parseButton" class="primary-button" type="button">内容を解析</button>
+          </div>
+
+          <label class="field-block" for="rawInput">
+            <span>内線表の内容</span>
+            <textarea id="rawInput" rows="14" placeholder="例:
+部署名,名前,内線番号
+総務部,中谷 昇,1001
+営業部,佐藤 美咲,2101"></textarea>
+          </label>
+
+          <div class="sample-box">
+            <h3>サンプル形式</h3>
+            <pre id="sampleText">部署名,名前,内線番号
+総務部,中谷 昇,1001
+営業部,佐藤 美咲,2101</pre>
+          </div>
+
+          <p id="adminStatus" class="status-message" aria-live="polite">ファイルを選択するか、内線表を貼り付けてください。</p>
+        </section>
+
+        <section class="card admin-side">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Preview</p>
+              <h2>変換結果</h2>
+            </div>
+          </div>
+
+          <div class="section-box preview-summary" id="previewSummary">
+            <p class="summary-main">まだ解析していません。</p>
+            <p class="summary-sub">解析後に件数と更新対象ファイル名を表示します。</p>
+          </div>
+
+          <div class="table-wrap">
+            <table class="preview-table">
+              <thead>
+                <tr>
+                  <th>部署名</th>
+                  <th>名前</th>
+                  <th>内線番号</th>
+                </tr>
+              </thead>
+              <tbody id="previewBody">
+                <tr>
+                  <td colspan="3">解析結果がここに表示されます。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <label class="field-block" for="moduleOutput">
+            <span>生成された `data/directory.js`</span>
+            <textarea id="moduleOutput" rows="16" readonly placeholder="解析後に公開用スクリプトが表示されます。"></textarea>
+          </label>
+
+          <div class="button-row button-row-stretch">
+            <button id="downloadButton" class="primary-button" type="button" disabled>directory.js をダウンロード</button>
+            <button id="copyButton" class="secondary-button" type="button" disabled>内容をコピー</button>
+          </div>
+
+          <div class="sample-box compact-box">
+            <h3>更新方法</h3>
+            <ol class="steps-list">
+              <li>この画面で `directory.js` を生成する</li>
+              <li>GitHub 上の `data/directory.js` を生成内容で置き換える</li>
+              <li>`main` に反映すると公開画面が更新される</li>
+            </ol>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./data/directory.js"></script>
+    <script src="./shared.js"></script>
+    <script src="./admin.js"></script>
+  </body>
+</html>
