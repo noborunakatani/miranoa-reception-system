@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ミラノア受付システム</title>
+    <meta name="theme-color" content="#edf4ff" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page page-visitor">
+    <div class="shell">
+      <header class="topbar card">
+        <div>
+          <p class="eyebrow">DNC Reception</p>
+          <h1>ミラノア受付システム</h1>
+          <p class="lede">部署名とお名前から内線番号をご案内します。</p>
+        </div>
+        <a class="ghost-link" href="./admin.html">内線表の更新</a>
+      </header>
+
+      <main class="layout">
+        <section class="avatar-panel card" aria-label="受付アバター">
+          <div class="avatar-stage">
+            <div class="avatar-glow"></div>
+            <img class="avatar-image" src="./assets/miranoa-avatar.svg" alt="ミラノア受付アバター" />
+          </div>
+          <div class="speech-bubble">
+            <p id="guideMessage">音声または手入力で、部署名とお名前を教えてください。</p>
+          </div>
+          <dl class="source-meta">
+            <div>
+              <dt>登録件数</dt>
+              <dd id="directoryCount">-</dd>
+            </div>
+            <div>
+              <dt>更新日時</dt>
+              <dd id="directoryUpdated">-</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="search-panel card" aria-label="検索操作">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Search</p>
+              <h2>訪問先を検索</h2>
+            </div>
+            <p class="panel-note">音声認識が使えない場合は、iPad キーボードの音声入力か手入力を使ってください。</p>
+          </div>
+
+          <section class="voice-section section-box" aria-labelledby="voiceTitle">
+            <div class="section-title-row">
+              <h3 id="voiceTitle">音声検索</h3>
+              <span class="pill">おすすめ</span>
+            </div>
+            <div class="voice-actions">
+              <button id="voiceButton" class="primary-button" type="button">音声で検索を開始</button>
+              <button id="stopButton" class="secondary-button" type="button" hidden>停止</button>
+            </div>
+            <p id="voiceSupportNote" class="inline-note">ブラウザの音声認識を確認中です。</p>
+            <label class="field-block" for="transcriptInput">
+              <span>認識テキスト</span>
+              <textarea
+                id="transcriptInput"
+                rows="3"
+                placeholder="例: 総務部の中谷昇をお願いします"
+              ></textarea>
+            </label>
+            <button id="transcriptSearchButton" class="secondary-button full-width" type="button">
+              この内容で検索
+            </button>
+          </section>
+
+          <section class="manual-section section-box" aria-labelledby="manualTitle">
+            <div class="section-title-row">
+              <h3 id="manualTitle">手入力検索</h3>
+            </div>
+            <div class="manual-grid">
+              <label class="field-block" for="departmentInput">
+                <span>部署名</span>
+                <input id="departmentInput" type="text" inputmode="search" autocomplete="off" placeholder="例: 総務部" />
+              </label>
+              <label class="field-block" for="nameInput">
+                <span>お名前</span>
+                <input id="nameInput" type="text" inputmode="search" autocomplete="off" placeholder="例: 中谷 昇" />
+              </label>
+            </div>
+            <div class="button-row">
+              <button id="manualSearchButton" class="primary-button" type="button">手入力で検索</button>
+              <button id="resetButton" class="secondary-button" type="button">リセット</button>
+            </div>
+          </section>
+
+          <p id="statusMessage" class="status-message" aria-live="polite">受付を開始できます。</p>
+
+          <section class="result-panel" aria-labelledby="resultTitle">
+            <div class="section-title-row">
+              <h3 id="resultTitle">検索結果</h3>
+            </div>
+            <div id="resultCard" class="result-card empty" aria-live="polite">
+              <p class="result-kicker">待機中</p>
+              <p class="result-main">部署名とお名前を入力してください。</p>
+              <p class="result-sub">一致した担当者の内線番号をここに表示します。</p>
+            </div>
+            <div id="candidateList" class="candidate-list" hidden></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="./data/directory.js"></script>
+    <script src="./shared.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
